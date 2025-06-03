@@ -8,7 +8,7 @@
 ATestActor::ATestActor(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	Value = 42;
+	Value = 69;
 
 	RootComponent = ObjectInitializer.CreateDefaultSubobject<USceneComponent>(this, TEXT("RootComponent"));
 
