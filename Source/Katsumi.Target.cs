@@ -1,4 +1,7 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
 using UnrealBuildTool;
+using System.Collections.Generic;
 
 public class KatsumiTarget : TargetRules
 {
@@ -6,8 +9,7 @@ public class KatsumiTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
-        IncludeOrderVersion  = EngineIncludeOrderVersion.Latest;
-
-		ExtraModuleNames.AddRange( new string[] { "KatsumiCore" } );
+		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
+		ExtraModuleNames.Add("Katsumi");
 	}
 }

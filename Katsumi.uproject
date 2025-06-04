@@ -5,9 +5,18 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "KatsumiCore",
+			"Name": "Katsumi",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
 		}
 	]
 }
