@@ -4,10 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "InputActionValue.h"
 #include "Bird.generated.h"
 
+class UCameraComponent;
+class USpringArmComponent;
 class UCapsuleComponent;
 class USkeletalMeshComponent;
+class UInputMappingContext;
+class UInputAction;
 
 UCLASS()
 class KATSUMI_API ABird : public APawn
@@ -22,11 +27,26 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	void MoveForward(float AxisValue);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputMappingContext* BirdMappingContext;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputAction* MoveAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputAction* LookAction;
+
+	void Move(const FInputActionValue& Value);
+	void Look(const FInputActionValue& Value);
 
 private:
 	UPROPERTY(VisibleAnywhere)
 	UCapsuleComponent* Capsule;
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* BirdMesh;
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArm;
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* ViewCamera;
 };
