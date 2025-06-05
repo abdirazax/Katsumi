@@ -22,10 +22,10 @@ protected:
 	float TimeConstant = 5.f;
 
 	UFUNCTION(BlueprintPure, Category = "Trigonometry Parameters")
-	float TransformedSin();
+	float TransformedSin() const;
 
 	UFUNCTION(BlueprintPure, Category = "Trigonometry Parameters")
-	float TransformedCos();
+	float TransformedCos() const;
 
 	template <typename T>
 	T Avg(T A, T B);

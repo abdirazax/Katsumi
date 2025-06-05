@@ -15,12 +15,12 @@ void AItem::BeginPlay()
 	Super::BeginPlay();
 }
 
-float AItem::TransformedSin()
+float AItem::TransformedSin() const
 {
 	return FMath::Sin(RunningTime * TimeConstant) * Amplitude;
 }
 
-float AItem::TransformedCos()
+float AItem::TransformedCos() const
 {
 	return FMath::Cos(RunningTime * TimeConstant) * Amplitude;
 }
