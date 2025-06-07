@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "Pawns/Bird.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
@@ -9,7 +7,6 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/PlayerController.h"
 
-// Sets default values
 ABird::ABird()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -53,20 +50,20 @@ void ABird::BeginPlay()
 
 void ABird::Move(const FInputActionValue& Value)
 {
-	const FVector2D CurrentValue = Value.Get<FVector2D>();
+	const FVector2D MovementVector = Value.Get<FVector2D>();
 	if (!Controller)
 	{
 		return;
 	}
-	if (CurrentValue.X != 0)
+	if (MovementVector.X != 0)
 	{
 		FVector Right = GetActorRightVector();
-		AddMovementInput(Right, CurrentValue.X);
+		AddMovementInput(Right, MovementVector.X);
 	}
-	if (CurrentValue.Y != 0)
+	if (MovementVector.Y != 0)
 	{
 		FVector Forward = GetActorForwardVector();
-		AddMovementInput(Forward, CurrentValue.Y);
+		AddMovementInput(Forward, MovementVector.Y);
 	}
 }
 
