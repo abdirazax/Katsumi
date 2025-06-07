@@ -22,5 +22,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = Movement)
 	TObjectPtr<UCharacterMovementComponent> KatsumiCharacterMovement;
 	UPROPERTY(BlueprintReadOnly, Category = Movement)
-	float GroundSpeed = 0.0f;
+	float GroundSpeed;
+	UPROPERTY(BlueprintReadOnly, Category = Movement)
+	bool bIsFalling;
 };

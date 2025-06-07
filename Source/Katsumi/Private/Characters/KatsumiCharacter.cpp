@@ -111,6 +111,11 @@ void AKatsumiCharacter::Look(const FInputActionValue& Value)
 	AddControllerPitchInput(LookVector.Y);
 }
 
+void AKatsumiCharacter::Jump()
+{
+	Super::Jump();
+}
+
 void AKatsumiCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -124,5 +129,6 @@ void AKatsumiCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AKatsumiCharacter::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AKatsumiCharacter::Look);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &AKatsumiCharacter::Jump);
 	}
 }

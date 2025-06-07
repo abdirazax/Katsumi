@@ -20,5 +20,6 @@ void UKatsumiAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	if (KatsumiCharacterMovement)
 	{
 		GroundSpeed = UKismetMathLibrary::VSizeXY(KatsumiCharacterMovement->Velocity);
+		bIsFalling = KatsumiCharacterMovement->IsFalling();
 	}
 }
