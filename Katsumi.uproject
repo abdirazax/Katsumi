@@ -67,6 +67,10 @@
 		{
 			"Name": "MetaHumanLiveLink",
 			"Enabled": true
+		},
+		{
+			"Name": "MetaHumanForMaya",
+			"Enabled": true
 		}
 	]
 }

@@ -32,23 +32,26 @@ AKatsumiCharacter::AKatsumiCharacter()
 	ViewCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("ViewCamera"));
 	ViewCamera->SetupAttachment(SpringArm);
 
-	Head = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Head"));
-	Head->SetupAttachment(GetMesh(), GetMesh()->GetFName());
+	Face = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Face"));
+	Face->SetupAttachment(GetMesh(), GetMesh()->GetFName());
+	Face->bIncludeComponentLocationIntoBounds = true;
 	Hair = CreateDefaultSubobject<UGroomComponent>(TEXT("Hair"));
-	Hair->SetupAttachment(Head, "head");
+	Hair->SetupAttachment(Face, "head");
+	Hair->bUseAttachParentBound = true;
 	Eyebrows = CreateDefaultSubobject<UGroomComponent>(TEXT("Eyebrows"));
-	Eyebrows->SetupAttachment(Head, "head");
+	Eyebrows->SetupAttachment(Face, "head");
+	Eyebrows->bUseAttachParentBound = true;
 	Eyelashes = CreateDefaultSubobject<UGroomComponent>(TEXT("Eyelashes"));
-	Eyelashes->SetupAttachment(Head, "head");
-
+	Eyelashes->SetupAttachment(Face, "head");
+	Eyelashes->bUseAttachParentBound = true;
 
 	MetaHumanComponentUE = CreateDefaultSubobject<UMetaHumanComponentUE>(TEXT("MetaHumanComponentUE"));
 
 	LODSync = CreateDefaultSubobject<ULODSyncComponent>(TEXT("LODSyncComponent"));
 	LODSync->NumLODs = 8;
 	LODSync->ComponentsToSync = {
-		FComponentSync(Head->GetFName(), ESyncOption::Drive),
 		FComponentSync(GetMesh()->GetFName(), ESyncOption::Drive),
+		FComponentSync(Face->GetFName(), ESyncOption::Drive),
 		FComponentSync(Hair->GetFName(), ESyncOption::Passive),
 		FComponentSync(Eyebrows->GetFName(), ESyncOption::Passive),
 		FComponentSync(Eyelashes->GetFName(), ESyncOption::Passive),

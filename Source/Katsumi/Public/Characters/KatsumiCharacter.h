@@ -52,7 +52,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = Hair)
 	TObjectPtr<UGroomComponent> Eyelashes;
 	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
-	TObjectPtr<USkeletalMeshComponent> Head;
+	TObjectPtr<USkeletalMeshComponent> Face;
 	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
 	TObjectPtr<UMetaHumanComponentUE> MetaHumanComponentUE;
 	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
