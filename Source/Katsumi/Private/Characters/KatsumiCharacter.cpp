@@ -35,6 +35,12 @@ AKatsumiCharacter::AKatsumiCharacter()
 	Face = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Face"));
 	Face->SetupAttachment(GetMesh(), GetMesh()->GetFName());
 	Face->bIncludeComponentLocationIntoBounds = true;
+	ClassyClothes = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("ClassyClothes"));
+	ClassyClothes->SetupAttachment(GetMesh(), GetMesh()->GetFName());
+	ClassyClothes->bIncludeComponentLocationIntoBounds = true;
+	Shoes = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Shoes"));
+	Shoes->SetupAttachment(GetMesh(), GetMesh()->GetFName());
+	Shoes->bIncludeComponentLocationIntoBounds = true;
 	Hair = CreateDefaultSubobject<UGroomComponent>(TEXT("Hair"));
 	Hair->SetupAttachment(Face, "head");
 	Hair->bUseAttachParentBound = true;
@@ -55,10 +61,19 @@ AKatsumiCharacter::AKatsumiCharacter()
 		FComponentSync(Hair->GetFName(), ESyncOption::Passive),
 		FComponentSync(Eyebrows->GetFName(), ESyncOption::Passive),
 		FComponentSync(Eyelashes->GetFName(), ESyncOption::Passive),
+		FComponentSync(ClassyClothes->GetFName(), ESyncOption::Passive),
+		FComponentSync(Shoes->GetFName(), ESyncOption::Passive),
 	};
 	{
-		FLODMappingData& Map = LODSync->CustomLODMapping.Add(GetMesh()->GetFName());
-		Map.Mapping = {0, 0, 1, 1, 2, 2, 3, 3};
+		FLODMappingData& MapBody = LODSync->CustomLODMapping.Add(GetMesh()->GetFName());
+		MapBody.Mapping = {0, 0, 1, 1, 2, 2, 3, 3};
+
+		FLODMappingData& MapShoes = LODSync->CustomLODMapping.Add(Shoes->GetFName());
+		MapShoes.Mapping = {0, 0, 1, 1, 2, 2, 2, 2};
+
+		FLODMappingData& MapClothes = LODSync->CustomLODMapping.Add(ClassyClothes->GetFName());
+		MapClothes.Mapping = {0, 0, 1, 1, 2, 2, 2, 2};
+		
 	}
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
@@ -80,6 +95,23 @@ void AKatsumiCharacter::BeginPlay()
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Enhanced Input Subsystem not found!"));
 		}
+	}
+}
+
+void AKatsumiCharacter::OnConstruction(const FTransform& Transform)
+{
+	Super::OnConstruction(Transform);
+
+	if (ClassyClothes && GetMesh())
+	{
+		ClassyClothes->SetLeaderPoseComponent(GetMesh());
+		ClassyClothes->SetAnimInstanceClass(nullptr);  
+	}
+
+	if (Shoes && GetMesh())
+	{
+		Shoes->SetLeaderPoseComponent(GetMesh());
+		Shoes->SetAnimInstanceClass(nullptr); 
 	}
 }
 

@@ -26,6 +26,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void OnConstruction(const FTransform& Transform) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	TObjectPtr<UInputMappingContext> CharacterMappingContext;
@@ -35,6 +36,11 @@ protected:
 	TObjectPtr<UInputAction> LookAction;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	TObjectPtr<UInputAction> JumpAction;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = MetaHuman)
+	TObjectPtr<USkeletalMeshComponent> ClassyClothes;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = MetaHuman)
+	TObjectPtr<USkeletalMeshComponent> Shoes;
 
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
@@ -53,6 +59,7 @@ private:
 	TObjectPtr<UGroomComponent> Eyelashes;
 	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
 	TObjectPtr<USkeletalMeshComponent> Face;
+	
 	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
 	TObjectPtr<UMetaHumanComponentUE> MetaHumanComponentUE;
 	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
