@@ -23,6 +23,8 @@ public:
 	AKatsumiCharacter();
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	UPROPERTY(BlueprintReadWrite, Category = Movement)
+	bool bCanMove = true;	
 
 protected:
 	virtual void BeginPlay() override;

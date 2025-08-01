@@ -75,3 +75,8 @@ DerivedDataCache/*
 
 # Ignore imported assets
 Content/MetaHumanSource/*
+Content/Characters/UEFN_Mannequin
+Content/ParagonCountess
+Content/ParagonYin
+Content/Audio
+Content/Weapon_Pack

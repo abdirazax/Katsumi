@@ -118,10 +118,9 @@ void AKatsumiCharacter::OnConstruction(const FTransform& Transform)
 void AKatsumiCharacter::Move(const FInputActionValue& Value)
 {
 	const FVector2D MovementVector = Value.Get<FVector2D>();
-	if (!Controller)
-	{
-		return;
-	}
+	if (!Controller) return;
+	
+	if (!bCanMove) return;
 	const FRotator YawRotation(0, Controller->GetControlRotation().Yaw, 0);
 	if (MovementVector.Y != 0)
 	{
