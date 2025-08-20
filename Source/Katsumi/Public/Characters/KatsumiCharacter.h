@@ -48,22 +48,21 @@ protected:
 	void Look(const FInputActionValue& Value);
 	virtual void Jump() override;
 
-private:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TObjectPtr<USpringArmComponent> SpringArm;
-	UPROPERTY(VisibleAnywhere)
-	TObjectPtr<UCameraComponent> ViewCamera;
-	UPROPERTY(VisibleAnywhere, Category = Hair)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	TObjectPtr<UCameraComponent> Camera;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Hair)
 	TObjectPtr<UGroomComponent> Hair;
-	UPROPERTY(VisibleAnywhere, Category = Hair)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Hair)
 	TObjectPtr<UGroomComponent> Eyebrows;
-	UPROPERTY(VisibleAnywhere, Category = Hair)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = Hair)
 	TObjectPtr<UGroomComponent> Eyelashes;
-	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = MetaHuman)
 	TObjectPtr<USkeletalMeshComponent> Face;
 	
-	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = MetaHuman)
 	TObjectPtr<UMetaHumanComponentUE> MetaHumanComponentUE;
-	UPROPERTY(VisibleAnywhere, Category = MetaHuman)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = MetaHuman)
 	TObjectPtr<ULODSyncComponent> LODSync;
 };

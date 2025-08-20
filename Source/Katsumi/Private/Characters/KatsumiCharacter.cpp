@@ -25,12 +25,13 @@ AKatsumiCharacter::AKatsumiCharacter()
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 540.f, 0.f);
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	SpringArm->SetupAttachment(GetRootComponent());
+	SpringArm->SetupAttachment(GetMesh(), GetMesh()->GetFName());
 	SpringArm->TargetArmLength = 300.f;
 	SpringArm->SetRelativeRotation(FRotator(-30.f, 0.f, 0.0f));
+	
 
-	ViewCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("ViewCamera"));
-	ViewCamera->SetupAttachment(SpringArm);
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(SpringArm);
 
 	Face = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Face"));
 	Face->SetupAttachment(GetMesh(), GetMesh()->GetFName());
